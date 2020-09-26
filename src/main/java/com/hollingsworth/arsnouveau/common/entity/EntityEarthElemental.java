@@ -11,38 +11,33 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
-import software.bernie.geckolib.animation.AnimationState;
-import software.bernie.geckolib.animation.builder.AnimationBuilder;
-import software.bernie.geckolib.animation.controller.EntityAnimationController;
-import software.bernie.geckolib.entity.IAnimatedEntity;
-import software.bernie.geckolib.event.AnimationTestEvent;
-import software.bernie.geckolib.manager.EntityAnimationManager;
+import software.bernie.geckolib.core.IAnimatable;
+import software.bernie.geckolib.core.controller.AnimationController;
+import software.bernie.geckolib.core.event.predicate.AnimationTestPredicate;
+import software.bernie.geckolib.core.manager.AnimationManager;
 
-public class EntityEarthElemental extends CreatureEntity implements IAnimatedEntity {
-    EntityAnimationManager manager = new EntityAnimationManager();
+public class EntityEarthElemental extends CreatureEntity implements IAnimatable
+{
+    AnimationManager manager = new AnimationManager();
 
-    EntityAnimationController<EntityEarthElemental> smeltController = new EntityAnimationController<>(this, "smeltController", 20, this::smeltPredicate);
+    AnimationController<EntityEarthElemental> smeltController = new AnimationController(this, "smeltController", 20, this::smeltPredicate);
 
-    EntityAnimationController<EntityEarthElemental> idleController = new EntityAnimationController<>(this, "idleController", 20, this::idlePredicate);
+    AnimationController<EntityEarthElemental> idleController = new AnimationController(this, "idleController", 20, this::idlePredicate);
 
 
-    private <E extends Entity> boolean smeltPredicate(AnimationTestEvent<E> event) {
+    private <E extends Entity & IAnimatable> boolean smeltPredicate(AnimationTestPredicate<E> event) {
         return true;
     }
-    private <E extends Entity> boolean idlePredicate(AnimationTestEvent<E> event) {
+    private <E extends Entity & IAnimatable> boolean idlePredicate(AnimationTestPredicate<E> event) {
 
         if(this.getHeldStack().isEmpty()){
             manager.setAnimationSpeed(1f);
-            System.out.println("idling");
-            idleController.setAnimation(new AnimationBuilder().addAnimation("idle", true));
+            //System.out.println("idling");
+            //idleController.setAnimation(new AnimationBuilder().addAnimation("idle", true));
         }else{
             return true;
         }
@@ -110,7 +105,7 @@ public class EntityEarthElemental extends CreatureEntity implements IAnimatedEnt
 
 
     @Override
-    public EntityAnimationManager getAnimationManager() {
+    public AnimationManager getAnimationManager() {
         return manager;
     }
 

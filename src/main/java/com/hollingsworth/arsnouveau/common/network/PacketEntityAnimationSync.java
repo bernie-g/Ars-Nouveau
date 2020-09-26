@@ -5,8 +5,8 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
-import software.bernie.geckolib.animation.builder.AnimationBuilder;
-import software.bernie.geckolib.entity.IAnimatedEntity;
+import software.bernie.geckolib.core.IAnimatable;
+import software.bernie.geckolib.core.builder.AnimationBuilder;
 
 import java.util.function.Supplier;
 
@@ -52,10 +52,11 @@ public class PacketEntityAnimationSync {
                     Minecraft mc = Minecraft.getInstance();
                     ClientWorld world = mc.world;
 
-                    if(world.getEntityByID(message.entityID) instanceof IAnimatedEntity){
+                    if(world.getEntityByID(message.entityID) instanceof IAnimatable){
                         System.out.println("Adding animation for " + message.entityID );
-                        ((IAnimatedEntity)world.getEntityByID(message.entityID)).getAnimationManager().setAnimationSpeed(2f);
-                        ((IAnimatedEntity)world.getEntityByID(message.entityID)).getAnimationManager()
+                        IAnimatable animatedEntity = (IAnimatable) world.getEntityByID(message.entityID);
+                        animatedEntity.getAnimationManager().setAnimationSpeed(2f);
+                        animatedEntity.getAnimationManager()
                                 .get(message.animationController).setAnimation(new AnimationBuilder().addAnimation(message.animation));
                     }
                 };

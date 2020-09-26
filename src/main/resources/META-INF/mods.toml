@@ -48,6 +48,7 @@ Craft powerful spells, baubles and artifacts, and tame wild magical creatures fo
     modId="patchouli"
     mandatory=true
     versionRange="[1.15.2,)"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.ars_nouveau]]
@@ -60,6 +61,6 @@ Craft powerful spells, baubles and artifacts, and tame wild magical creatures fo
 [[dependencies.ars_nouveau]]
     modId="geckolib"
     mandatory=true
-    versionRange="[forge-1.15.2,)"
-    ordering="AFTER"
+    versionRange="[SNAPSHOT-100,]"
+    ordering="BEFORE"
     side="BOTH"

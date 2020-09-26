@@ -4,14 +4,14 @@ import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.common.entity.EntityCarbuncle;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import software.bernie.geckolib.animation.model.AnimatedEntityModel;
-import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
+import software.bernie.geckolib.model.AnimatedEntityModel;
+import software.bernie.geckolib.renderers.legacy.AnimatedModelRenderer;
 
-public class CarbuncleModel extends AnimatedEntityModel<EntityCarbuncle> {
+public class CarbuncleModel extends AnimatedEntityModel<EntityCarbuncle>
+{
     public final AnimatedModelRenderer carbuncle;
     public final AnimatedModelRenderer head;
     public final AnimatedModelRenderer ear_right;
@@ -25,7 +25,7 @@ public class CarbuncleModel extends AnimatedEntityModel<EntityCarbuncle> {
     public final AnimatedModelRenderer body;
 
     @Override
-    public ResourceLocation getAnimationFileLocation() {
+    public ResourceLocation getAnimationFileLocation(EntityCarbuncle entity) {
         return new ResourceLocation(ArsNouveau.MODID + ":animations/carbuncle_animations.json");
     }
 

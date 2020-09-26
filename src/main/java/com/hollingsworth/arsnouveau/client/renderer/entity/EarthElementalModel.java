@@ -1,16 +1,17 @@
 package com.hollingsworth.arsnouveau.client.renderer.entity;
 
 import com.hollingsworth.arsnouveau.ArsNouveau;
-import com.hollingsworth.arsnouveau.common.entity.EntityCarbuncle;
 import com.hollingsworth.arsnouveau.common.entity.EntityEarthElemental;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
-import software.bernie.geckolib.animation.model.AnimatedEntityModel;
-import software.bernie.geckolib.animation.render.AnimatedModelRenderer;
+import software.bernie.geckolib.model.AnimatedEntityModel;
+import software.bernie.geckolib.renderers.legacy.AnimatedModelRenderer;
 
-public class EarthElementalModel extends AnimatedEntityModel<EntityEarthElemental> {
+
+public class EarthElementalModel extends AnimatedEntityModel<EntityEarthElemental>
+{
 
     private final AnimatedModelRenderer earth_elemental;
     private final AnimatedModelRenderer ball;
@@ -140,7 +141,7 @@ public class EarthElementalModel extends AnimatedEntityModel<EntityEarthElementa
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation() {
+    public ResourceLocation getAnimationFileLocation(EntityEarthElemental entity) {
         return new ResourceLocation(ArsNouveau.MODID + ":animations/earth_elemental_animation.json");
     }
 }

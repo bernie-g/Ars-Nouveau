@@ -108,7 +108,7 @@ repositories {
         url "https://maven.blamejared.com"
     }
 	maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
-	
+    maven { url 'https://repo.repsy.io/mvn/fadookie/particleman' }
 }
 
 dependencies {
@@ -118,7 +118,13 @@ dependencies {
 	compile fg.deobf('top.theillusivec4.curios:curios:FORGE-1.15.2-+')
 	compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.15.2-1.2-32.168:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.15.2-1.2-32.168")
-	implementation fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:2.0.0')
+	implementation fg.deobf('software.bernie.geckolib:forge-1.15.2-geckolib:SNAPSHOT-100')
+    compile "software.bernie.geckolib:geckolib-core:${project.geckolib_core_version}"
+    compile "software.bernie.geckolib:geckolib-core:${project.geckolib_core_version}:sources"
+    compile 'com.eliotlash.molang:molang:SNAPSHOT.8'
+    compile 'com.eliotlash.mclib:mclib:SNAPSHOT.8'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.0'
 }
 
 

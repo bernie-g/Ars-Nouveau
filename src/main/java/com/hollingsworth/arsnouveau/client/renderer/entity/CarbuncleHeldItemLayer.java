@@ -25,8 +25,8 @@ public class CarbuncleHeldItemLayer extends LayerRenderer<EntityCarbuncle, Carbu
 
         matrixStackIn.push();
 
-        matrixStackIn.translate(((this.getEntityModel()).tail.positionOffsetX)/64f, -((this.getEntityModel()).carbuncle.positionOffsetY)/10f ,
-                ((this.getEntityModel()).tail.positionOffsetZ)/64f);
+        matrixStackIn.translate(((this.getEntityModel()).tail.getPositionX())/64f, -((this.getEntityModel()).carbuncle.getPositionY())/10f ,
+                ((this.getEntityModel()).tail.getPositionZ())/64f);
 
 //        matrixStackIn.rotate(Vector3f.XP.rotation((float) Math.cos(this.getEntityModel().carbuncle.positionOffsetY)));
 //        matrixStackIn.rotate(Vector3f.XP.rotationDegrees(this.getEntityModel().carbuncle.rotateAngleX));
